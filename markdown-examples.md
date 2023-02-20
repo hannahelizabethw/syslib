@@ -17,12 +17,12 @@ The following is a blockquote:
 I am using 'git'.
 
 This is a code block:
-'''
+```
 git status
 git add
 git commit -m "message here"
 git push origin main
-'''
+```
 
 *this is the first item
 *this is the second item
