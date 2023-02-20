@@ -31,3 +31,10 @@ Ordered List
 
 1. this is the first item
 2. this is the second item
+
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| data     | data     | data     |
+| data 2   | data 2   | data 3   |
+
+
