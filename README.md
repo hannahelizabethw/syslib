@@ -38,6 +38,18 @@ exit
 
 #### Logging in as a Regular User
 
+#### Week 8: Creating a Bare Bones OPAC
+
+Must cd to /var/www/html before creating any of these files.
+
+When trying to create the file called 'opacbb.html', I ran nano opacbb.html and when I tried to save it,
+I got an error saying that permission was denied. Cue mild panic. So I went back to the Week 7 video
+about creating PHP scripts to look for how we created the opac.php file. Ran sudo nano opacbb.html and was
+able to create the file. 
+
+Was getting an error online bc I named my file opacbb.html not opacbb.php. Ran sudo nano opacbb.html
+and changed file name to opacbb.php.
+
 ## Random Notes
 
 If you are trying to get out of something and there are no obvious exit commands or prompts,
