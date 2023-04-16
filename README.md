@@ -36,7 +36,7 @@ root@syslib-2023:/home/hannahwilliams# exit
 exit
 ```
 
-#### Week 8: Creating a Bare Bones OPAC
+## Week 8: Creating a Bare Bones OPAC
 
 Must cd to /var/www/html before creating any of these files.
 
@@ -48,7 +48,7 @@ able to create the file.
 Was getting an error online bc I named my file opacbb.html not opacbb.php. Ran sudo nano opacbb.html
 and changed file name to opacbb.php.
 
-#### Week 10: Installing WordPress
+## Week 10: Installing WordPress
 
 To make sure my systems met the requirements for installing WordPress, I ran: 
 
@@ -69,6 +69,117 @@ sudo wget https://wordpress.org/latest.tar.gz
 ```
 
 Created the database and user
+
+## Week 11: Installing Omeka
+
+The fact that we are not getting comprehensive instructions for this makes me
+**very nervous**.
+
+Prerequisites:
+1. Install ImageMagick
+```
+sudo apt install imagemagick
+```
+2. Enable Apache mod_rewrite
+```
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+```
+Tried to install unzip command and it didn't work. Hoping it is pre-installed
+because a quick Google told me that newer Ubuntu comes with it installed.
+
+Okay, now it's time to hopefully not f this up.
+
+In order to not f this up, I believe I have to cd to /var/www/html,
+where I will download Omeka using 
+```
+sudo wget https://github.com/omeka/Omeka/releases/download/v3.1/omeka-3.1.zip
+```
+I then ran ls to see how it downloaded. It is called omeka-3.1.zip. I will
+now attempt to unzip it using 
+```
+sudo unzip omeka-3.1.zip
+```
+It did not work. Says the unzip command is not found. Looked at Element to
+see if anyone else had issues with this. One person did, but no one answered
+their question. Going to attempt to install again, this time while in
+/var/www/html/
+
+```
+sudo apt install unzip
+```
+Successfully installed unzip!! Maybe had to be in /var/www/html/ before I
+could install??
+
+Will now try to unzip again:
+```
+sudo unzip omeka-3.1.zip
+```
+**Successfully unzipped!!**
+
+Now it's time to create a new database and user in MySQL for Omeka.
+While still in /var/www/html/, I need to run:
+```
+sudo su
+mysql -u root
+```
+1. Create a new user for the Omeka database
+2. Create a new database for Omeka
+3. Grant all privileges to the new user for the new database
+4. Make sure the database was created.
+5. Exit MySQL
+```
+create user 'omeka'@'localhost' identified by 'queenoffill0ry';
+create database omeka;
+grant all privileges on omeka.* to 'omeka'@'localhost';
+show databases;
+\q
+```
+Database successfully created.
+
+Getting out of the root user by typing ```exit```
+
+Back in /var/www/html/
+
+Changed omeka-3.1 to omeka using:
+```
+sudo mv omeka-3.1 omeka
+```
+```
+cd omeka
+ls
+```
+Need to open db.ini and enter credentials.
+```
+sudo nano db.ini
+```
+host     = "localhost"
+username = "omeka"
+password = "queenoffill0ry"
+dbname   = "omeka"
+prefix   = "omeka_"
+charset  = "utf8"
+;port     = ""
+
+To change file ownership, went to /var/www/html/omeka/files and ran:
+```
+sudo chown -R www-data:www-data *
+```
+Now to restart Apache2 and MySQL and hope everything worked okay.
+```
+sudo systemctl restart apache2
+sudo systemctl restart mysql
+```
+I went to my IP address to continue the install and was met with an
+Installation Error message. The dom PHP extension is required for Omeka to
+run. So now I have to go back and figure out what I did wrong. 
+
+Then thought maybe the db.ini file need to be a .php file, so I made a copy
+named db.php. That didn't work, so I asked the Technical Help chat on Element.
+They suggested I need to run the php extras, so I did that will still in
+/var/www/html/omeka. Restarted apache2 and mysql and reloaded my browswer,
+and got the right thing!
+
 ## Random Notes
 
 If you are trying to get out of something and there are no obvious exit commands or prompts,
