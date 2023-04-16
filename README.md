@@ -50,8 +50,29 @@ able to create the file.
 Was getting an error online bc I named my file opacbb.html not opacbb.php. Ran sudo nano opacbb.html
 and changed file name to opacbb.php.
 
+#### Week 10: Installing WordPress
+
+To make sure my systems met the requirements for installing WordPress, I ran: 
+
+'''
+php --version
+mysql --version
+'''
+
+Systems met the requirements.
+
+Added additional PHP modules to system per Dr. Burns. Could not install
+php-imagick, as it could not be found. Unsure if this was a typo.
+
+Downloaded WordPress using
+'''
+sudo wget https://wordpress.org/latest.tar.gz
+'''
+
+Created the database and user
 ## Random Notes
 
 If you are trying to get out of something and there are no obvious exit commands or prompts,
 try using 'q' to exit.
 
+Because I can never remember how to push my notes back to GitHub
