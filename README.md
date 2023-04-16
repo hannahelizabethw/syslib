@@ -36,8 +36,6 @@ root@syslib-2023:/home/hannahwilliams# exit
 exit
 ```
 
-#### Logging in as a Regular User
-
 #### Week 8: Creating a Bare Bones OPAC
 
 Must cd to /var/www/html before creating any of these files.
@@ -54,20 +52,21 @@ and changed file name to opacbb.php.
 
 To make sure my systems met the requirements for installing WordPress, I ran: 
 
-'''
+```
 php --version
 mysql --version
-'''
+```
 
 Systems met the requirements.
 
 Added additional PHP modules to system per Dr. Burns. Could not install
 php-imagick, as it could not be found. Unsure if this was a typo.
+I'm not sure how/if this will really impact my WordPress installation.
 
-Downloaded WordPress using
-'''
+Downloaded WordPress using:
+```
 sudo wget https://wordpress.org/latest.tar.gz
-'''
+```
 
 Created the database and user
 ## Random Notes
@@ -75,4 +74,10 @@ Created the database and user
 If you are trying to get out of something and there are no obvious exit commands or prompts,
 try using 'q' to exit.
 
-Because I can never remember how to push my notes back to GitHub
+Because I can never remember how to push my notes back to GitHub:
+
+```
+git add filename
+git commit -m "message"
+git push origin main
+```
