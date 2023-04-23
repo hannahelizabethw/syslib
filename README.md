@@ -180,6 +180,54 @@ They suggested I need to run the php extras, so I did that will still in
 /var/www/html/omeka. Restarted apache2 and mysql and reloaded my browswer,
 and got the right thing!
 
+## Week 12: Installing Koha
+
+After creating the new VM and connecting to the server, in order to update 
+the system, I ran
+```
+sudo apt update
+sudo apt upgrade
+sudo apt autoremove -y && sudo apt clean
+sudo apt install gnupg2
+sudo reboot now
+```
+Logging in as root user to add Koha Repository
+```
+sudo su
+```
+Adding Koha repository:
+```
+echo 'deb http://debian.koha-community.org/koha stable main' | sudo tee /etc/apt/sources.list.d/koha.list
+wget -q -O- https://debian.koha-community.org/koha/gpg.asc | sudo apt-key add -
+```
+Installing Koha
+```
+apt update
+apt show koha-common
+apt install koha-common
+```
+
+Configure Koha
+
+```
+cd /etc/koha
+nano koha-sites.conf
+```
+change INTRAPORT ='80' TO INTRAPORT = '8080'
+
+cd to get home and then install mysql
+
+```
+cd
+apt install mysql-server
+
+## Working with Koha
+
+I made one MARC record from scratch and that took me absolutely way too long.
+I need to figure out a way to do copy-cataloging because I am lazy.
+
+ 
+
 ## Random Notes
 
 If you are trying to get out of something and there are no obvious exit commands or prompts,
@@ -192,3 +240,4 @@ git add filename
 git commit -m "message"
 git push origin main
 ```
+
